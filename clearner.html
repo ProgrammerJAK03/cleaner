@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Washine Chemicals | Premium Industrial Cleaning Services</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Favicon / Tab Icon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="shortcut icon" type="image/png" href="logo.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1A2C3E;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary: #0D6EFD;
+            --primary-dark: #0B5ED7;
+            --primary-light: #EFF6FF;
+            --secondary: #00B4D8;
+            --accent: #48CAE4;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #20B859;
+            --whatsapp-light: #E9F9EF;
+            --dark: #0A2540;
+            --gray-bg: #F8FAFE;
+            --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+            --hover-shadow: 0 25px 40px -16px rgba(0, 0, 0, 0.18);
+            --border-radius: 28px;
+            --border-radius-card: 24px;
+        }
+
+        /* ---- Navbar Premium ---- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1100;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            padding: 6px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-img-nav {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            object-fit: cover;
+            transition: transform 0.2s;
+        }
+        
+        .logo-img-nav:hover {
+            transform: scale(1.02);
+        }
+        
+        .logo-text {
+            margin-left: 12px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 550;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            color: #1E2F3E;
+            text-decoration: none;
+            letter-spacing: -0.2px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a.active { color: var(--primary); font-weight: 600; }
+
+        .hamburger {
+            display: none;
+            font-size: 1.7rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        @media (max-width: 840px) {
+            .navbar { padding: 0.8rem 5%; }
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(18px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.6rem;
+                transform: translateY(-180%);
+                transition: 0.3s;
+                box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
+                border-radius: 0 0 32px 32px;
+                z-index: 999;
+            }
+            .nav-links.active { transform: translateY(0); }
+            .hamburger { display: block; }
+            .logo-text { font-size: 1.1rem; }
+            .logo-img-nav { width: 40px; height: 40px; }
+        }
+
+        /* Hero Section */
+        .hero {
+            /* min-height: 95vh; */
+            min-height: 100vh;
+            background: linear-gradient(105deg, rgba(10, 37, 64, 0.88) 0%, rgba(0, 180, 216, 0.75) 100%), url('https://picsum.photos/seed/washine_premium/1920/1280');
+            background-size: cover;
+            background-position: center 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+        }
+
+        .hero-content { max-width: 850px; animation: fadeUp 1s ease-out; }
+        .hero h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; color: white; }
+        .hero p { font-size: 1.25rem; margin-bottom: 2.2rem; color: #f0f9ff; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .btn-group { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            background: white; color: var(--primary-dark); padding: 14px 38px; border-radius: 60px;
+            font-weight: 700; display: inline-flex; align-items: center; gap: 12px; text-decoration: none;
+            transition: 0.25s; box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+        .btn-primary:hover { transform: scale(1.03); gap: 16px; background: #f8faff; }
+        .btn-outline {
+            background: transparent; border: 2px solid white; color: white; padding: 12px 32px;
+            border-radius: 60px; font-weight: 600; text-decoration: none; display: inline-flex;
+            align-items: center; gap: 10px; transition: 0.25s;
+        }
+        .btn-outline:hover { background: white; color: var(--primary); transform: translateY(-2px); }
+
+        section { padding: 5rem 5%; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3rem auto; }
+        .section-tag {
+            display: inline-block; font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--primary); margin-bottom: 0.8rem;
+            background: var(--primary-light); padding: 4px 14px; border-radius: 40px;
+        }
+        .section-header h2 { font-size: 2.6rem; font-weight: 700; color: #0A2540; margin-bottom: 1rem; }
+        .section-header p { color: #5A6E82; font-size: 1.1rem; }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1350px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: white; border-radius: var(--border-radius-card); overflow: hidden;
+            transition: all 0.4s; box-shadow: var(--card-shadow); border: 1px solid rgba(0,0,0,0.03);
+        }
+        .service-card:hover { transform: translateY(-12px); box-shadow: var(--hover-shadow); }
+        .card-image { height: 240px; overflow: hidden; }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s; }
+        .service-card:hover .card-image img { transform: scale(1.08); }
+        .card-content { padding: 2rem; }
+        .card-icon {
+            width: 52px; height: 52px; background: var(--primary-light); border-radius: 18px;
+            display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+            color: var(--primary); font-size: 1.4rem;
+        }
+        .card-content h3 { font-size: 1.65rem; font-weight: 700; margin-bottom: 0.75rem; color: #0A2540; }
+        .card-content p { color: #5A6E82; margin-bottom: 1.8rem; line-height: 1.5; }
+        .wa-card-btn {
+            background: var(--whatsapp-light); color: var(--whatsapp); font-weight: 700;
+            padding: 12px 20px; border-radius: 100px; display: inline-flex; align-items: center;
+            justify-content: center; gap: 12px; width: 100%; transition: 0.25s; text-decoration: none;
+        }
+        .wa-card-btn:hover { background: var(--whatsapp); color: white; transform: translateY(-2px); }
+
+        /* Features Section */
+        .features-section {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
+            padding: 4rem 5%;
+        }
+        .features-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .feature-box {
+            text-align: center; padding: 1.8rem; background: white; border-radius: 32px;
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.05); transition: 0.3s;
+        }
+        .feature-box:hover { transform: translateY(-6px); }
+        .feature-box i {
+            font-size: 2.8rem; background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-clip: text; -webkit-background-clip: text; color: transparent; margin-bottom: 1rem;
+        }
+        .feature-box h3 { font-size: 1.3rem; margin-bottom: 0.6rem; color: #0A2540; }
+
+        /* ========== TWO-COLUMN CONTACT SECTION ========== */
+        .contact-premium {
+            background: linear-gradient(125deg, #0A2540 0%, #1A3A5C 100%);
+            margin: 0;
+            padding: 5rem 5%;
+            position: relative;
+        }
+        .contact-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--whatsapp), var(--secondary), var(--primary));
+        }
+        .contact-grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            align-items: start;
+        }
+        /* Left Side - Company Details */
+        .contact-info-side {
+            backdrop-filter: blur(4px);
+            border-radius: 36px;
+            padding: 0rem 2.5rem 2.5rem 2.5rem;
+            height: 100%;
+        }
+        .company-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+        .company-badge .small-logo {
+            width: 160px; /* Adjusted from 500px to fit layout */
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+        .contact-info-side h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        .contact-info-side .company-desc {
+            color: rgba(255,255,255,0.75);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .contact-details-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .contact-details-list li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+        }
+        .contact-details-list li i {
+            width: 32px;
+            height: 32px;
+            background: rgba(37, 211, 102, 0.2);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--whatsapp);
+            font-size: 1rem;
+        }
+        .wa-number-large {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--whatsapp);
+            text-decoration: none;
+        }
+        .social-links-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+        .social-links-contact a {
+            width: 42px;
+            height: 42px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: 0.2s;
+            font-size: 1.2rem;
+        }
+        .social-links-contact a:hover {
+            background: var(--whatsapp);
+            transform: translateY(-3px);
+        }
+        /* Right Side - Form */
+        .contact-form-side {
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(4px);
+            border-radius: 36px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .contact-form-side h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        .input-field {
+            margin-bottom: 1.2rem;
+        }
+        .input-field input, .input-field textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 60px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: white;
+            transition: 0.25s;
+        }
+        .input-field textarea {
+            border-radius: 28px;
+            resize: vertical;
+        }
+        .input-field input::placeholder, .input-field textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .input-field input:focus, .input-field textarea:focus {
+            outline: none;
+            border-color: var(--whatsapp);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.2);
+        }
+        .btn-wa-super {
+            background: var(--whatsapp);
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 60px;
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: 0.25s;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+        }
+        .btn-wa-super:hover {
+            background: var(--whatsapp-dark);
+            transform: scale(1.01);
+            gap: 18px;
+        }
+        .helper-note-wa {
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Professional Footer with Logo */
+        footer {
+            background: #0A2540;
+            color: #B9D0E5;
+            padding: 3rem 5% 1.5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-col .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+        .footer-logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .footer-col h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+        .footer-col p {
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+        .footer-col a {
+            color: #B9D0E5;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        .footer-col a:hover { color: var(--secondary); transform: translateX(3px); }
+        .footer-links-list {
+            list-style: none;
+        }
+        .footer-links-list li { margin-bottom: 0.6rem; }
+        .newsletter-input {
+            display: flex;
+            margin-top: 1rem;
+        }
+        .newsletter-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 50px 0 0 50px;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        .newsletter-input button {
+            background: var(--primary);
+            border: none;
+            padding: 0 18px;
+            border-radius: 0 50px 50px 0;
+            color: white;
+            cursor: pointer;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .footer-bottom-links a {
+            color: #B9D0E5;
+            margin-left: 1.5rem;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 28px;
+            right: 28px;
+            background: var(--whatsapp);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            box-shadow: 0 6px 18px rgba(37,211,102,0.45);
+            z-index: 1050;
+            transition: 0.2s;
+            animation: subtlePulse 2.2s infinite;
+            text-decoration: none;
+        }
+        @keyframes subtlePulse {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
+            70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+        }
+        .toast-message {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            background: #0A2540;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            z-index: 1200;
+            animation: fadeSlide 3s forwards;
+        }
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateX(40px); }
+            15% { opacity: 1; transform: translateX(0); }
+            85% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(40px); visibility: hidden; }
+        }
+        @media (max-width: 880px) {
+            .contact-grid-2col { grid-template-columns: 1fr; gap: 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .section-header h2 { font-size: 2rem; }
+        }
+        @media (max-width: 540px) {
+            .hero h1 { font-size: 1.9rem; }
+            .contact-info-side, .contact-form-side { padding: 1.5rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom-links a { margin: 0 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header id="header">
+    <nav class="navbar">
+        <!-- Logo Image in Navbar -->
+        <a href="#" class="logo-link">
+            <img src="logo.png" style="width: auto;" alt="Washine Chemicals Logo" class="logo-img-nav" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'48\' height=\'48\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' rx=\'20\' fill=\'%230D6EFD\'/%3E%3Ctext x=\'50\' y=\'68\' font-size=\'52\' text-anchor=\'middle\' fill=\'white\' font-weight=\'bold\'%3EW%3C/text%3E%3C/svg%3E'">
+        </a>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home" class="nav-link-active">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact-premium">Contact</a></li>
+            <li><a href="https://www.facebook.com/WashineChemical" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> Facebook</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <div class="hero-content" data-aos="fade-up">
+        <h1>Professional cleaning,<br>industrial strength.</h1>
+        <p>Top-tier chemicals & expert cleaning services — hospitals, offices, factories & homes.</p>
+        <div class="btn-group">
+            <a href="#services" class="btn-primary">Explore solutions <i class="fas fa-arrow-right"></i></a>
+            <a href="#contact-premium" class="btn-outline">Get a Quote <i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-star"></i> Premium Services</span>
+        <h2>Specialized cleaning solutions</h2>
+        <p>Advanced methodologies, eco-friendly chemicals, and certified experts</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-image"><img src="https://picsum.photos/seed/floor_premium/500/350" alt="Floor Polishing"></div>
+            <div class="card-content">
+                <div class="card-icon"><i class="fas fa-broom"></i></div>
+                <h3>Floor Polishing</h3>
+                <p>Marble crystallization, epoxy coating, and deep scrubbing. Restore floors to mirror shine.</p>
+                <a href="https://wa.me/923242315993?text=Hello%20Washine%20Chemicals,%20I%20need%20Floor%20Polishing%20service." class="wa-card-btn" target="_blank"><i class="fab fa-whatsapp"></i> Inquire now</a>
+            </div>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-image"><img src="https://picsum.photos/seed/tank_premium/500/350" alt="Water Tank Cleaning"></div>
+            <div class="card-content">
+                <div class="card-icon"><i class="fas fa-water"></i></div>
+                <h3>Water Tank Disinfection</h3>
+                <p>Complete bio-film removal, disinfection & safe drinking water standards.</p>
+                <a href="https://wa.me/923242315993?text=Hello%20Washine%20Chemicals,%20I%20want%20Water%20Tank%20Cleaning." class="wa-card-btn" target="_blank"><i class="fab fa-whatsapp"></i> Inquire now</a>
+            </div>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="card-image"><img src="https://picsum.photos/seed/facade_premium/500/350" alt="Facade Cleaning"></div>
+            <div class="card-content">
+                <div class="card-icon"><i class="fas fa-building"></i></div>
+                <h3>Facade & Glass Cleaning</h3>
+                <p>High-rise rope access, eco-friendly solutions, crystal-clear results.</p>
+                <a href="https://wa.me/923242315993?text=Hello%20Washine%20Chemicals,%20I%20need%20Facade%20Glass%20Cleaning." class="wa-card-btn" target="_blank"><i class="fab fa-whatsapp"></i> Inquire now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="features-section">
+    <div class="features-wrapper">
+        <div class="feature-box" data-aos="fade-up"><i class="fas fa-user-shield"></i><h3>Expert Team</h3><p>Certified professionals with years of experience</p></div>
+        <div class="feature-box" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-leaf"></i><h3>Eco-Friendly</h3><p>Biodegradable chemicals safe for humans & pets</p></div>
+        <div class="feature-box" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-clock"></i><h3>On-Time Service</h3><p>We respect your schedule, punctuality guaranteed</p></div>
+        <div class="feature-box" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-headset"></i><h3>24/7 Support</h3><p>Always here to assist your cleaning needs</p></div>
+    </div>
+</div>
+
+<!-- TWO-COLUMN CONTACT SECTION -->
+<section id="contact-premium" class="contact-premium">
+    <div class="contact-grid-2col">
+        <!-- LEFT: Company Details -->
+        <div class="contact-info-side" data-aos="fade-right">
+            <div class="company-badge">
+                <img src="logo.png" alt="logo" class="small-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'60\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' rx=\'20\' fill=\'%230D6EFD\'/%3E%3Ctext x=\'50\' y=\'68\' font-size=\'52\' text-anchor=\'middle\' fill=\'white\' font-weight=\'bold\'%3EW%3C/text%3E%3C/svg%3E'">
+            </div>
+            <h3>Let's work together</h3>
+            <p class="company-desc">We're committed to delivering spotless environments with industrial-grade solutions. Reach out anytime — our team responds within minutes on WhatsApp.</p>
+            <ul class="contact-details-list">
+                <li><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/923242315993" class="wa-number-large" target="_blank">+92 324 2315993</a></li>
+                <li><i class="far fa-envelope"></i> <strong>Email:</strong> Washine2024@gmail.com</li>
+                <li><i class="far fa-clock"></i> <strong>Response Time:</strong> Within 1 hour (Mon-Sat)</li>
+            </ul>
+            <div class="social-links-contact">
+                <a href="https://www.facebook.com/WashineChemical" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/923242315993" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <!-- RIGHT: WhatsApp Inquiry Form -->
+        <div class="contact-form-side" data-aos="fade-left">
+            <h4><i class="fab fa-whatsapp"></i> Send us a message</h4>
+            <div class="input-field">
+                <input type="text" id="waName" placeholder="Full name *">
+            </div>
+            <div class="input-field">
+                <input type="tel" id="waPhone" placeholder="Phone number (optional)">
+            </div>
+            <div class="input-field">
+                <textarea id="waMsg" rows="3" placeholder="Describe your requirement... * (e.g., marble floor polishing for office)"></textarea>
+            </div>
+            <button class="btn-wa-super" id="sendWABtnPremium">
+                <i class="fab fa-whatsapp"></i> Send inquiry via WhatsApp
+            </button>
+            <div class="helper-note-wa">
+                <i class="fas fa-shield-alt"></i> Your data is shared only over encrypted WhatsApp chat
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROFESSIONAL FOOTER with Logo Image -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <div class="footer-logo">
+                <img src="logo.png" style="width: auto;" alt="Washine Chemicals Logo" class="footer-logo-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'45\' height=\'45\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' rx=\'20\' fill=\'%230D6EFD\'/%3E%3Ctext x=\'50\' y=\'68\' font-size=\'52\' text-anchor=\'middle\' fill=\'white\' font-weight=\'bold\'%3EW%3C/text%3E%3C/svg%3E'">
+            </div>
+            <p>Industrial cleaning experts & chemical suppliers since 2015. Trusted by 500+ clients across Pakistan.</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact-premium">Contact</a></li>
+                <li><a href="https://www.facebook.com/WashineChemical" target="_blank">Facebook Page</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Services</h3>
+            <ul class="footer-links-list">
+                <li><a href="#">Floor Polishing</a></li>
+                <li><a href="#">Water Tank Cleaning</a></li>
+                <li><a href="#">Facade & Glass Cleaning</a></li>
+                <li><a href="#">Industrial Chemicals</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Newsletter</h3>
+            <p>Get updates about offers & cleaning tips.</p>
+            <div class="newsletter-input">
+                <input type="email" placeholder="Your email">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Washine Chemicals. All rights reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/923242315993?text=Hello%20Washine%20Chemicals" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true, offset: 50 });
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    if (hamburger) {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = hamburger?.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+            document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        if (window.scrollY > 40) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+
+        const sections = document.querySelectorAll('section[id]');
+        const scrollPos = window.scrollY + 150;
+        sections.forEach(section => {
+            const id = section.getAttribute('id');
+            const navLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+            if (navLink) {
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                    document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                    navLink.classList.add('active');
+                }
+            }
+        });
+    });
+
+    function showToast(msg, isError = false) {
+        const existing = document.querySelector('.toast-message');
+        if (existing) existing.remove();
+        const toast = document.createElement('div');
+        toast.className = 'toast-message';
+        toast.style.backgroundColor = isError ? '#e53e3e' : '#0A2540';
+        toast.innerHTML = `<i class="fab fa-whatsapp"></i> ${msg}`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3200);
+    }
+
+    const sendBtn = document.getElementById('sendWABtnPremium');
+    function sendWhatsAppInquiry() {
+        let name = document.getElementById('waName').value.trim();
+        let phone = document.getElementById('waPhone').value.trim();
+        let message = document.getElementById('waMsg').value.trim();
+        if (!name) { showToast("❌ Please enter your name.", true); return; }
+        if (!message) { showToast("📝 Please describe your cleaning requirement.", true); return; }
+        let finalMsg = `*🆕 New Website Inquiry*%0A%0A*👤 Name:* ${encodeURIComponent(name)}%0A`;
+        if (phone) finalMsg += `*📞 Phone:* ${encodeURIComponent(phone)}%0A`;
+        finalMsg += `*📋 Requirement:* ${encodeURIComponent(message)}%0A%0A_Sent via Premium Contact Form_`;
+        window.open(`https://wa.me/923242315993?text=${finalMsg}`, '_blank', 'noopener,noreferrer');
+        showToast("Opening WhatsApp...");
+    }
+    if (sendBtn) sendBtn.addEventListener('click', sendWhatsAppInquiry);
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === "#" || targetId === "") return;
+            const targetElem = document.querySelector(targetId);
+            if (targetElem) { e.preventDefault(); targetElem.scrollIntoView({ behavior: 'smooth' }); }
+        });
+    });
+</script>
+</body>
+</html>
